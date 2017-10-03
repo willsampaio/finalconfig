@@ -50,11 +50,12 @@ public class ItemADO {
     }
 
     private boolean intToBool(int i){
-        if(i == 1){
-            return true;
-        }else{
-            return false;
-        }
+//        if(i == 1){
+//            return true;
+//        }else{
+//            return false;
+//        }
+        return i==1;
     }
 
     public void inserirItem (Item i) {
@@ -72,7 +73,7 @@ public class ItemADO {
     public void inserirItemId (Item i) {
         try {
             db.getBanco().execSQL("INSERT INTO item VALUES (?, ?, ? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)",
-                    new String[]{i.isConf_sinc()+"", boolToIntStr(i.isConf_sinc()), boolToIntStr(i.isConf_wifi()), boolToIntStr(i.isConf_dados()), boolToIntStr(i.isConf_bt()),
+                    new String[]{i.getId()+"", boolToIntStr(i.isConf_sinc()), boolToIntStr(i.isConf_wifi()), boolToIntStr(i.isConf_dados()), boolToIntStr(i.isConf_bt()),
                             boolToIntStr(i.isConf_gps()), boolToIntStr(i.isConf_som()), boolToIntStr(i.isDia_dom()), boolToIntStr(i.isDia_seg()),
                             boolToIntStr(i.isDia_ter()), boolToIntStr(i.isDia_qua()), boolToIntStr(i.isDia_qui()), boolToIntStr(i.isDia_sex()),
                             boolToIntStr(i.isDia_sab()), i.getHora_inicio(), i.getHora_fim()});
@@ -100,15 +101,19 @@ public class ItemADO {
         }
     }
 
-//    public void atualizarItem(Item s){
-//        try {
-//            db.getBanco().execSQL("UPDATE item SET titulo = ?, descricao = ? WHERE id = ?",
-//                    new String[]{""+s.getTitulo(), s.getDescricao(),
-//                            ""+s.getId()});
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void atualizarItem(Item i){
+        try {
+            db.getBanco().execSQL("UPDATE item conf_sinc = ?, conf_wifi = ?, conf_dados = ?, conf_bt = ?, conf_gps = ?, " +
+                            "conf_som = ?, dia_dom = ?, dia_seg = ?,dia_ter = ?, dia_qua = ?, dia_qui = ?, dia_sex = ?, " +
+                            "dia_sab = ?, hora_inicio = ?, hora_fim = ? WHERE id = ?",
+                    new String[]{boolToIntStr(i.isConf_sinc()), boolToIntStr(i.isConf_wifi()), boolToIntStr(i.isConf_dados()), boolToIntStr(i.isConf_bt()),
+                    boolToIntStr(i.isConf_gps()), boolToIntStr(i.isConf_som()), boolToIntStr(i.isDia_dom()), boolToIntStr(i.isDia_seg()),
+                    boolToIntStr(i.isDia_ter()), boolToIntStr(i.isDia_qua()), boolToIntStr(i.isDia_qui()), boolToIntStr(i.isDia_sex()),
+                    boolToIntStr(i.isDia_sab()), i.getHora_inicio(), i.getHora_fim(), i.getId()+""});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private ArrayList<Item> buscarItens(Cursor cursor){
         listaItems = new ArrayList<Item>();
@@ -117,19 +122,19 @@ public class ItemADO {
         while (cursor != null) {
             item = new Item();
             item.setId(cursor.getInt(cursor.getColumnIndex("id")));
-            item.setConf_sinc(intToBool(cursor.getColumnIndex("conf_sinc")));
-            item.setConf_wifi(intToBool(cursor.getColumnIndex("conf_wifi")));
-            item.setConf_dados(intToBool(cursor.getColumnIndex("conf_dados")));
-            item.setConf_bt(intToBool(cursor.getColumnIndex("conf_bt")));
-            item.setConf_gps(intToBool(cursor.getColumnIndex("conf_gps")));
-            item.setConf_som(intToBool(cursor.getColumnIndex("conf_som")));
-            item.setDia_dom(intToBool(cursor.getColumnIndex("dia_dom")));
-            item.setDia_seg(intToBool(cursor.getColumnIndex("dia_seg")));
-            item.setDia_ter(intToBool(cursor.getColumnIndex("dia_ter")));
-            item.setDia_qua(intToBool(cursor.getColumnIndex("dia_qua")));
-            item.setDia_qui(intToBool(cursor.getColumnIndex("dia_qui")));
-            item.setDia_sex(intToBool(cursor.getColumnIndex("dia_sex")));
-            item.setDia_sab(intToBool(cursor.getColumnIndex("dia_sab")));
+            item.setConf_sinc(intToBool(cursor.getInt(cursor.getColumnIndex("conf_sinc"))));
+            item.setConf_wifi(intToBool(cursor.getInt(cursor.getColumnIndex("conf_wifi"))));
+            item.setConf_dados(intToBool(cursor.getInt(cursor.getColumnIndex("conf_dados"))));
+            item.setConf_bt(intToBool(cursor.getInt(cursor.getColumnIndex("conf_bt"))));
+            item.setConf_gps(intToBool(cursor.getInt(cursor.getColumnIndex("conf_gps"))));
+            item.setConf_som(intToBool(cursor.getInt(cursor.getColumnIndex("conf_som"))));
+            item.setDia_dom(intToBool(cursor.getInt(cursor.getColumnIndex("dia_dom"))));
+            item.setDia_seg(intToBool(cursor.getInt(cursor.getColumnIndex("dia_seg"))));
+            item.setDia_ter(intToBool(cursor.getInt(cursor.getColumnIndex("dia_ter"))));
+            item.setDia_qua(intToBool(cursor.getInt(cursor.getColumnIndex("dia_qua"))));
+            item.setDia_qui(intToBool(cursor.getInt(cursor.getColumnIndex("dia_qui"))));
+            item.setDia_sex(intToBool(cursor.getInt(cursor.getColumnIndex("dia_sex"))));
+            item.setDia_sab(intToBool(cursor.getInt(cursor.getColumnIndex("dia_sab"))));
             item.setHora_inicio(cursor.getString(cursor.getColumnIndex("hora_inicio")));
             item.setHora_fim(cursor.getString(cursor.getColumnIndex("hora_fim")));
 

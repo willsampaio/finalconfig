@@ -3,6 +3,7 @@ package com.example.finalconfig.finalconfig;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ public class ItemActivity extends AppCompatActivity {
     ImageView conf_sinc, conf_wifi, conf_dados, conf_bt, conf_gps, conf_som;
     TextView dia_dom, dia_seg, dia_ter, dia_qua, dia_qui, dia_sex, dia_sab, hora_inicio, hora_fim;
     SeekBar duracao;
+    Button btSalvar;
     Item item;
 
     @Override
@@ -48,6 +50,8 @@ public class ItemActivity extends AppCompatActivity {
         hora_fim = (TextView) findViewById(R.id.textViewFim);
 
         duracao = (SeekBar) findViewById(R.id.seekBar);
+
+        btSalvar = (Button) findViewById(R.id.btSalvar);
 
         item = new Item(-1);
 
@@ -214,6 +218,21 @@ public class ItemActivity extends AppCompatActivity {
                     item.setConf_som(true);
                     Toast.makeText(ItemActivity.this, "Ativar Som", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemADO iado = new ItemADO(getApplicationContext());
+
+                if(item.getId() == -1) {
+                    iado.inserirItem(item);
+                }else{
+                    iado.atualizarItem(item);
+                }
+
+                finish();
             }
         });
     }
