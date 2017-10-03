@@ -139,7 +139,7 @@ public class ItemADO {
         return listaItems;
     }
 
-    public ArrayList<Item> buscarItemId(Item i){
+    public Item buscarItemId(Item i){
         try {
 
             Cursor cursor = db.getBanco().rawQuery("SELECT * FROM item WHERE id = ?",
@@ -149,7 +149,11 @@ public class ItemADO {
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
-            return listaItems;
+            if(listaItems.size() > 0) {
+                return listaItems.get(0);
+            }else{
+                return null;
+            }
         }
     }
 

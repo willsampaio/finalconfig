@@ -15,7 +15,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+            android:layout_weight="0.05"/>
 
          <include layout="@layout/item_layout"
              android:id="@+id/includeItem"
@@ -31,13 +31,13 @@
         <Button android:id="@+id/btSalvar"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_weight="0.1"
+            android:layout_weight="0.01"
             android:text="Salvar"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.1"/>
 
     </LinearLayout>
 

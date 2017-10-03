@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 Bundle bundle = new Bundle();
-                bundle.putString(getString(R.string.par_), getString(R.string.par_novo));
+                bundle.putInt(getString(R.string.par_id), -1);
                 Intent intent = new Intent(MainActivity.this, ItemActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);

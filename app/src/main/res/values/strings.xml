@@ -6,4 +6,5 @@
     <string name="par_novo">novo</string>
     <string name="par_editar">editar</string>
     <string name="par_excluir">excluir</string>
+    <string name="par_id">novo</string>
 </resources>
