@@ -50,6 +50,8 @@ public class ItemActivity extends AppCompatActivity {
         duracao = (SeekBar) findViewById(R.id.seekBar);
 
         item = new Item(-1);
+
+        setCliks();
     }
 
     private void setItem(){
