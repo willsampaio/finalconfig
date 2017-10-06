@@ -13,21 +13,21 @@
             android:name=".MainActivity"
             android:label="@string/activiy_main"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ItemActivity"
+            android:label="@string/activiy_Item" />
+        <activity
+            android:name=".SobreActivity"
+            android:label="@string/activiy_sobre" />
+
+        <activity android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".ItemActivity"
-            android:label="@string/activiy_Item">
-        </activity>
-
-        <activity
-            android:name=".SobreActivity"
-            android:label="@string/activiy_sobre">
         </activity>
     </application>
 
