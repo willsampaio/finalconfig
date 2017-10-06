@@ -1,8 +1,10 @@
 package com.example.finalconfig.finalconfig;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +50,7 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         if(view == null){
             layoutInflater = LayoutInflater.from(activity);
             view = layoutInflater.inflate(R.layout.item_layout, viewGroup, false);
@@ -61,6 +63,14 @@ public class ItemAdapter extends BaseAdapter {
         Item item = getItem(i);
         viewHolder.setValues(item);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Item item = getItem(i);
+                abrirPorId(item.getId());
+            }
+        });
+
 
 //        viewHolder.conf_wifi.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -71,6 +81,14 @@ public class ItemAdapter extends BaseAdapter {
 
 
         return view;
+    }
+
+    private void abrirPorId(int id){
+        Bundle bundle = new Bundle();
+        bundle.putInt(activity.getString(R.string.par_id), id);
+        Intent intent = new Intent(activity, ItemActivity.class);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
     }
 
 

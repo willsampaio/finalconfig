@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">finalconfig</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_sobre">Sobre</string>
+    <string name="action_apagar">Apagar</string>
+    <string name="action_cancelar">Canelar</string>
 
     <string name="par_">par_</string>
     <string name="par_novo">novo</string>
     <string name="par_editar">editar</string>
     <string name="par_excluir">excluir</string>
-    <string name="par_id">novo</string>
+    <string name="par_id">id</string>
 </resources>

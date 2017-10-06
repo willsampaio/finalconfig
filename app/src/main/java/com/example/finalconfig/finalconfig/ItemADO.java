@@ -103,8 +103,8 @@ public class ItemADO {
 
     public void atualizarItem(Item i){
         try {
-            db.getBanco().execSQL("UPDATE item conf_sinc = ?, conf_wifi = ?, conf_dados = ?, conf_bt = ?, conf_gps = ?, " +
-                            "conf_som = ?, dia_dom = ?, dia_seg = ?,dia_ter = ?, dia_qua = ?, dia_qui = ?, dia_sex = ?, " +
+            db.getBanco().execSQL("UPDATE item SET conf_sinc = ?, conf_wifi = ?, conf_dados = ?, conf_bt = ?, conf_gps = ?, " +
+                            "conf_som = ?, dia_dom = ?, dia_seg = ?, dia_ter = ?, dia_qua = ?, dia_qui = ?, dia_sex = ?, " +
                             "dia_sab = ?, hora_inicio = ?, hora_fim = ? WHERE id = ?",
                     new String[]{boolToIntStr(i.isConf_sinc()), boolToIntStr(i.isConf_wifi()), boolToIntStr(i.isConf_dados()), boolToIntStr(i.isConf_bt()),
                     boolToIntStr(i.isConf_gps()), boolToIntStr(i.isConf_som()), boolToIntStr(i.isDia_dom()), boolToIntStr(i.isDia_seg()),

@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FloatingActionButton fab;
     private ListView listViewItens;
     private ItemAdapter itemAdapter;
     private  ArrayList<Item> listItens;
@@ -28,27 +30,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         listViewItens = (ListView) findViewById(R.id.listViewMain);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
-//        Item item = new Item(1);
-//        item.setHora_inicio("10:00");
-//        item.setHora_fim("12:00");
-//        item.setConf_wifi(true);
-//        item.setDia_dom(true);
-//        list.add(item);
+        listViewItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = (Item)adapterView.getItemAtPosition(i);
+                abrirPorId(item.getId());
+            }
+        });
 
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
-                Bundle bundle = new Bundle();
-                bundle.putInt(getString(R.string.par_id), -1);
-                Intent intent = new Intent(MainActivity.this, ItemActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                abrirPorId(-1);
             }
         });
     }
@@ -74,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_sobre) {
             return true;
         }
 
@@ -87,4 +84,13 @@ public class MainActivity extends AppCompatActivity {
         itemAdapter = new ItemAdapter(listItens, this);
         listViewItens.setAdapter(itemAdapter);
     }
+
+    private void abrirPorId(int id){
+        Bundle bundle = new Bundle();
+        bundle.putInt(getString(R.string.par_id), id);
+        Intent intent = new Intent(MainActivity.this, ItemActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
 }

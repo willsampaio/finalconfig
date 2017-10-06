@@ -2,6 +2,8 @@ package com.example.finalconfig.finalconfig;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,11 +26,41 @@ public class ItemActivity extends AppCompatActivity {
 
         configuracao();
         setItem();
+        showItem();
 
-        if(item.getId() != -1){
-            showItem();
+//        if(item.getId() != -1){
+//            showItem();
+//        }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_item, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_apagar) {
+            apagar();
+            finish();
+            return true;
         }
 
+        if (id == R.id.action_cancelar) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void configuracao(){
@@ -72,33 +104,48 @@ public class ItemActivity extends AppCompatActivity {
         hora_fim.setText(item.getHora_fim());
 
         int colorId = R.color.colorAccent;
+        int colorId0 = R.color.colorBlack;
 
         if(item.isDia_dom()){
             dia_dom.setTextColor(getResources().getColor(colorId));
+        }else {
+            dia_dom.setTextColor(getResources().getColor(colorId0));
         }
 
         if(item.isDia_seg()){
             dia_seg.setTextColor(getResources().getColor(colorId));
+        }else {
+            dia_seg.setTextColor(getResources().getColor(colorId0));
         }
 
         if(item.isDia_ter()){
             dia_ter.setTextColor(getResources().getColor(colorId));
+        }else {
+            dia_ter.setTextColor(getResources().getColor(colorId0));
         }
 
         if(item.isDia_qua()){
             dia_qua.setTextColor(getResources().getColor(colorId));
+        }else {
+            dia_qua.setTextColor(getResources().getColor(colorId0));
         }
 
         if(item.isDia_qui()){
             dia_qui.setTextColor(getResources().getColor(colorId));
+        }else {
+            dia_qui.setTextColor(getResources().getColor(colorId0));
         }
 
         if(item.isDia_sex()){
             dia_sex.setTextColor(getResources().getColor(colorId));
+        }else {
+            dia_sex.setTextColor(getResources().getColor(colorId0));
         }
 
         if(item.isDia_sab()){
             dia_sab.setTextColor(getResources().getColor(colorId));
+        }else {
+            dia_sab.setTextColor(getResources().getColor(colorId0));
         }
 
         int onId = R.drawable.switch_on;
@@ -143,6 +190,107 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     private void setCliks(){
+
+        hora_inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showItem();
+            }
+        });
+
+        hora_fim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showItem();
+            }
+        });
+
+        dia_dom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item.isDia_dom()) {
+                    item.setDia_dom(false);
+                }else {
+                    item.setDia_dom(true);
+                }
+                showItem();
+            }
+        });
+
+        dia_seg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item.isDia_seg()) {
+                    item.setDia_seg(false);
+                }else {
+                    item.setDia_seg(true);
+                }
+                showItem();
+            }
+        });
+
+        dia_ter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item.isDia_ter()) {
+                    item.setDia_ter(false);
+                }else {
+                    item.setDia_ter(true);
+                }
+                showItem();
+            }
+        });
+
+        dia_qua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item.isDia_qua()) {
+                    item.setDia_qua(false);
+                }else {
+                    item.setDia_qua(true);
+                }
+                showItem();
+            }
+        });
+
+        dia_qui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item.isDia_qui()) {
+                    item.setDia_qui(false);
+                }else {
+                    item.setDia_qui(true);
+                }
+                showItem();
+            }
+        });
+
+        dia_sex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item.isDia_sex()){
+                    item.setDia_sex(false);
+                }else {
+                    item.setDia_sex(true);
+                }
+                showItem();
+            }
+        });
+
+        dia_sab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item.isDia_sab()) {
+                    item.setDia_sab(false);
+                }else {
+                    item.setDia_sab(true);
+                }
+                showItem();
+            }
+        });
+
         conf_sinc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,6 +301,7 @@ public class ItemActivity extends AppCompatActivity {
                     item.setConf_sinc(true);
                     Toast.makeText(ItemActivity.this, "Ativar Sinc", Toast.LENGTH_SHORT).show();
                 }
+                showItem();
             }
         });
 
@@ -166,6 +315,7 @@ public class ItemActivity extends AppCompatActivity {
                     item.setConf_wifi(true);
                     Toast.makeText(ItemActivity.this, "Ativar Wi-Fi", Toast.LENGTH_SHORT).show();
                 }
+                showItem();
             }
         });
 
@@ -179,6 +329,7 @@ public class ItemActivity extends AppCompatActivity {
                     item.setConf_dados(true);
                     Toast.makeText(ItemActivity.this, "Ativar Dados", Toast.LENGTH_SHORT).show();
                 }
+                showItem();
             }
         });
 
@@ -192,6 +343,8 @@ public class ItemActivity extends AppCompatActivity {
                     item.setConf_bt(true);
                     Toast.makeText(ItemActivity.this, "Ativar Bluetooth", Toast.LENGTH_SHORT).show();
                 }
+
+                showItem();
             }
         });
 
@@ -205,6 +358,7 @@ public class ItemActivity extends AppCompatActivity {
                     item.setConf_gps(true);
                     Toast.makeText(ItemActivity.this, "Ativar GPS", Toast.LENGTH_SHORT).show();
                 }
+                showItem();
             }
         });
 
@@ -218,26 +372,37 @@ public class ItemActivity extends AppCompatActivity {
                     item.setConf_som(true);
                     Toast.makeText(ItemActivity.this, "Ativar Som", Toast.LENGTH_SHORT).show();
                 }
+                showItem();
             }
         });
 
         btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ItemADO iado = new ItemADO(getApplicationContext());
-
-                if(item.getId() == -1) {
-                    iado.inserirItem(item);
-                }else{
-                    iado.atualizarItem(item);
-                }
-
+                salvar();
                 finish();
             }
         });
+
     }
 
+    private void salvar(){
+        ItemADO iado = new ItemADO(getApplicationContext());
 
+        if(item.getId() == -1) {
+            iado.inserirItem(item);
+        }else{
+            iado.atualizarItem(item);
+        }
+
+    }
+
+    private void apagar(){
+        ItemADO iado = new ItemADO(getApplicationContext());
+        if(item != null && item.id != -1) {
+            iado.deletarItem(item);
+        }
+    }
 
 
 }
