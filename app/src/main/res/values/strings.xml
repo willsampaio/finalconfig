@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">finalconfig</string>
+    <string name="activiy_main">@string/app_name</string>
+    <string name="activiy_Item">Item</string>
+    <string name="activiy_sobre">Sobre</string>
+
+
     <string name="action_sobre">Sobre</string>
     <string name="action_apagar">Apagar</string>
     <string name="action_cancelar">Canelar</string>
@@ -9,4 +14,35 @@
     <string name="par_editar">editar</string>
     <string name="par_excluir">excluir</string>
     <string name="par_id">id</string>
+
+
+    <string name="info_app">Aplicativo desenvolvido como tarefa interdiscipllinar entre as turmas de Desingn Gráfico e Ciência da Computação.</string>
+    <string name="info_porfessores">Professores: Alexandre Michael e Valmir Alves Teixeira Junior</string>
+    <string name="info_alunos">
+        Alunos:\n
+        Bruno Éricles Rodrigues Gois\n
+        Glauber Ramon Bezerra de Souza\n
+        Julio Cesar Teles de Lima Júnior\n
+        Willer Sampaio Silva
+    </string>
+    <string name="info_unit">Universidade Tiradentes</string>
+    <string name="info_unit_site"><u>unit.br</u></string>
+    <string name="info_unit_tel"><u>08007292100</u></string>
+    <string name="info_tudo">
+        Aplicativo desenvolvido como tarefa interdiscipllinar entre as turmas de Desingn Gráfico e Ciência da Computação.\n\n
+
+        Professores:\n
+        Alexandre Michael\n
+        Valmir Alves Teixeira Junior\n\n
+
+        Alunos:\n
+        Bruno Éricles Rodrigues Gois\n
+        Glauber Ramon Bezerra de Souza\n
+        Julio Cesar Teles de Lima Júnior\n
+        Willer Sampaio Silva\n\n
+
+        Universidade Tiradentes
+    </string>
+
+
 </resources>
