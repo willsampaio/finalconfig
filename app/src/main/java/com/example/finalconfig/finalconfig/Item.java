@@ -19,7 +19,7 @@ public class Item {
     private boolean dia_qui;
     private boolean dia_sex;
     private boolean dia_sab;
-    private String hora_inicio, hora_fim;
+    private String hora_inicio = "00:00", hora_fim = "00:00";
     int id;
 
     public Item() {

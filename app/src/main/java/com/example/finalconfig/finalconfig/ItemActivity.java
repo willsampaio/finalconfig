@@ -1,7 +1,12 @@
 package com.example.finalconfig.finalconfig;
 
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,7 +14,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class ItemActivity extends AppCompatActivity {
 
@@ -63,6 +72,7 @@ public class ItemActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void configuracao(){
         conf_sinc= (ImageView) findViewById(R.id.imageViewSinc);
         conf_wifi= (ImageView) findViewById(R.id.imageViewWifi);
@@ -85,7 +95,15 @@ public class ItemActivity extends AppCompatActivity {
 
         btSalvar = (Button) findViewById(R.id.btSalvar);
 
+        Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
+        SimpleDateFormat sdf = new SimpleDateFormat("HH");
+        String h = sdf.format(hora);
+        sdf = new SimpleDateFormat("mm");
+        String m = sdf.format(hora);
+
         item = new Item(-1);
+        item.setHora_inicio(h + ":" + m);
+        item.setHora_fim((Integer.parseInt(h)+1) + ":" + m);
 
         setCliks();
     }
@@ -194,7 +212,7 @@ public class ItemActivity extends AppCompatActivity {
         hora_inicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                abrirRelogio('i');
                 showItem();
             }
         });
@@ -202,7 +220,7 @@ public class ItemActivity extends AppCompatActivity {
         hora_fim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                abrirRelogio('f');
                 showItem();
             }
         });
@@ -402,6 +420,41 @@ public class ItemActivity extends AppCompatActivity {
         if(item != null && item.id != -1) {
             iado.deletarItem(item);
         }
+    }
+
+    private void abrirRelogio(final char i_f){
+        LayoutInflater li = getLayoutInflater();
+        View view = li.inflate(R.layout.time_layout, null);
+
+        final TimePicker timePicker = view.findViewById(R.id.timePicker);
+        timePicker.setIs24HourView(true);
+        Button btOk = view.findViewById(R.id.buttonSalvarHora);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(view);
+        builder.setCancelable(false);
+        final AlertDialog alerta = builder.create();
+        alerta.show();
+
+        btOk.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            public void onClick(View arg0) {
+                String hr = timePicker.getHour() + ":" + timePicker.getMinute();
+
+                switch (i_f) {
+                    case 'i':
+                        item.setHora_inicio(hr);
+                        break;
+                    case 'f':
+                        item.setHora_fim(hr);
+                        break;
+                    default:
+                        break;
+                }
+                showItem();
+                alerta.dismiss();
+            }
+        });
     }
 
 
