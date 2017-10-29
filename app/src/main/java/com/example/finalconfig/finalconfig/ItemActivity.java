@@ -28,6 +28,7 @@ public class ItemActivity extends AppCompatActivity {
     Button btSalvar;
     Item item;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,33 +171,33 @@ public class ItemActivity extends AppCompatActivity {
         int offId = R.drawable.switch_off;
 
         if(item.isConf_sinc()){
-            conf_sinc.setImageResource(onId);
+            conf_sinc.setImageResource(R.drawable.sinc1);
         }else {
-            conf_sinc.setImageResource(offId);
+            conf_sinc.setImageResource(R.drawable.sinc0);
         }
 
         if(item.isConf_wifi()){
-            conf_wifi.setImageResource(onId);
+            conf_wifi.setImageResource(R.drawable.wifi1);
         }else {
-            conf_wifi.setImageResource(offId);
+            conf_wifi.setImageResource(R.drawable.wifi0);
         }
 
         if(item.isConf_dados()){
-            conf_dados.setImageResource(onId);
+            conf_dados.setImageResource(R.drawable.dados1);
         }else {
-            conf_dados.setImageResource(offId);
+            conf_dados.setImageResource(R.drawable.dados0);
         }
 
         if(item.isConf_bt()){
-            conf_bt.setImageResource(onId);
+            conf_bt.setImageResource(R.drawable.bt1);
         }else {
-            conf_bt.setImageResource(offId);
+            conf_bt.setImageResource(R.drawable.bt0);
         }
 
         if(item.isConf_gps()){
-            conf_gps.setImageResource(onId);
+            conf_gps.setImageResource(R.drawable.gps1);
         }else {
-            conf_gps.setImageResource(offId);
+            conf_gps.setImageResource(R.drawable.gps0);
         }
 
         if(item.isConf_som()){
@@ -439,7 +440,7 @@ public class ItemActivity extends AppCompatActivity {
         btOk.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             public void onClick(View arg0) {
-                String hr = timePicker.getHour() + ":" + timePicker.getMinute();
+                String hr = String.format("%02d:%02d", timePicker.getHour(), timePicker.getMinute());
 
                 switch (i_f) {
                     case 'i':

@@ -133,50 +133,50 @@
         <ImageView
             android:id="@+id/imageViewSinc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            app:srcCompat="@drawable/sinc0" />
 
         <ImageView
             android:id="@+id/imageViewWifi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            app:srcCompat="@drawable/wifi0" />
 
         <ImageView
             android:id="@+id/imageViewDados"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            app:srcCompat="@drawable/dados0" />
 
         <ImageView
             android:id="@+id/imageViewBt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            app:srcCompat="@drawable/bt0" />
 
         <ImageView
             android:id="@+id/imageViewGPS"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            app:srcCompat="@drawable/gps0" />
 
         <ImageView
             android:id="@+id/imageViewSom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            app:srcCompat="@drawable/switch_off" />
     </LinearLayout>
 
 </LinearLayout>
