@@ -43,6 +43,7 @@
             android:layout_gravity="center"
             android:text="Fim" />
 
+
     </LinearLayout>
 
     <LinearLayout
@@ -128,6 +129,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_margin="8dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -177,6 +179,12 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             app:srcCompat="@drawable/switch_off" />
+
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>

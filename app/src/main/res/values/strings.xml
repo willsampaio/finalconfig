@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">finalconfig</string>
+    <string name="app_name">Turn Off</string>
     <string name="activiy_main">@string/app_name</string>
-    <string name="activiy_Item">Item</string>
+    <string name="activiy_Item">Edição de Configuração</string>
     <string name="activiy_sobre">Sobre</string>
 
 
