@@ -178,7 +178,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@drawable/switch_off" />
+            app:srcCompat="@drawable/audio0" />
 
     </LinearLayout>
 

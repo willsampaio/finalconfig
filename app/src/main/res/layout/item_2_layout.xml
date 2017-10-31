@@ -204,7 +204,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/sinc0" />
+                app:srcCompat="@drawable/audio0" />
         </TableRow>
 
     </TableLayout>

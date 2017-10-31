@@ -34,6 +34,9 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         configuracao();
         setItem();
         showItem();
@@ -71,6 +74,12 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -123,7 +132,7 @@ public class ItemActivity extends AppCompatActivity {
         hora_fim.setText(item.getHora_fim());
 
         int colorId = R.color.colorAccent;
-        int colorId0 = R.color.colorBlack;
+        int colorId0 = R.color.colorText;
 
         if(item.isDia_dom()){
             dia_dom.setTextColor(getResources().getColor(colorId));
@@ -167,9 +176,6 @@ public class ItemActivity extends AppCompatActivity {
             dia_sab.setTextColor(getResources().getColor(colorId0));
         }
 
-        int onId = R.drawable.switch_on;
-        int offId = R.drawable.switch_off;
-
         if(item.isConf_sinc()){
             conf_sinc.setImageResource(R.drawable.sinc1);
         }else {
@@ -201,9 +207,9 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         if(item.isConf_som()){
-            conf_som.setImageResource(onId);
+            conf_som.setImageResource(R.drawable.audio1);
         }else {
-            conf_som.setImageResource(offId);
+            conf_som.setImageResource(R.drawable.audio0);
         }
 
     }

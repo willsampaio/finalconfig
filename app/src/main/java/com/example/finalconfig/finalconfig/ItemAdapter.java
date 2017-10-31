@@ -170,10 +170,6 @@ public class ItemAdapter extends BaseAdapter {
                 dia_sab.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
-
-            int onId = R.drawable.switch_on;
-            int offId = R.drawable.switch_off;
-
             if(item.isConf_sinc()){
                 conf_sinc.setImageResource(R.drawable.sinc1);
             }else {
@@ -205,9 +201,9 @@ public class ItemAdapter extends BaseAdapter {
             }
 
             if(item.isConf_som()){
-                conf_som.setImageResource(onId);
+                conf_som.setImageResource(R.drawable.audio1);
             }else {
-                conf_som.setImageResource(offId);
+                conf_som.setImageResource(R.drawable.audio0);
             }
 
         }

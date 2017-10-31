@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_sobre) {
             startActivity(new Intent(MainActivity.this, SobreActivity.class));
+            return true;
+        }
+
+        if (id == R.id.action_teste) {
+            Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show();
             return true;
         }
 
