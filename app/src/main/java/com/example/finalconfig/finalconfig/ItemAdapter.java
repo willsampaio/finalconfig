@@ -125,34 +125,49 @@ public class ItemAdapter extends BaseAdapter {
             hora_inicio.setText(item.getHora_inicio());
             hora_fim.setText(item.getHora_fim());
 
-            int colorId = R.color.colorAccent;
+            int colorIdOn = R.color.colorAccent;
+            int colorIdOff = R.color.colorText;
 
             if(item.isDia_dom()){
-                dia_dom.setTextColor(activity.getResources().getColor(colorId));
+                dia_dom.setTextColor(activity.getResources().getColor(colorIdOn));
+            }else{
+                dia_dom.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
             if(item.isDia_seg()){
-                dia_seg.setTextColor(activity.getResources().getColor(colorId));
+                dia_seg.setTextColor(activity.getResources().getColor(colorIdOn));
+            }else{
+                dia_seg.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
             if(item.isDia_ter()){
-                dia_ter.setTextColor(activity.getResources().getColor(colorId));
+                dia_ter.setTextColor(activity.getResources().getColor(colorIdOn));
+            }else{
+                dia_ter.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
             if(item.isDia_qua()){
-                dia_qua.setTextColor(activity.getResources().getColor(colorId));
+                dia_qua.setTextColor(activity.getResources().getColor(colorIdOn));
+            }else{
+                dia_qua.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
             if(item.isDia_qui()){
-                dia_qui.setTextColor(activity.getResources().getColor(colorId));
+                dia_qui.setTextColor(activity.getResources().getColor(colorIdOn));
+            }else{
+                dia_qui.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
             if(item.isDia_sex()){
-                dia_sex.setTextColor(activity.getResources().getColor(colorId));
+                dia_sex.setTextColor(activity.getResources().getColor(colorIdOn));
+            }else{
+                dia_sex.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
             if(item.isDia_sab()){
-                dia_sab.setTextColor(activity.getResources().getColor(colorId));
+                dia_sab.setTextColor(activity.getResources().getColor(colorIdOn));
+            }else{
+                dia_sab.setTextColor(activity.getResources().getColor(colorIdOff));
             }
 
 

@@ -44,6 +44,8 @@
         Universidade Tiradentes
     </string>
 
+    <string name="info_item">Toque nos ícones para alternar as opções desejadas.</string>
+
     <string name="title_activity_splashscreen">SplashscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

@@ -75,24 +75,24 @@ public class ItemActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void configuracao(){
-        conf_sinc= (ImageView) findViewById(R.id.imageViewSinc);
-        conf_wifi= (ImageView) findViewById(R.id.imageViewWifi);
-        conf_dados= (ImageView) findViewById(R.id.imageViewDados);
-        conf_bt= (ImageView) findViewById(R.id.imageViewBt);
-        conf_gps= (ImageView) findViewById(R.id.imageViewGPS);
-        conf_som= (ImageView) findViewById(R.id.imageViewSom);
+        conf_sinc= (ImageView) findViewById(R.id.imageViewSinc2);
+        conf_wifi= (ImageView) findViewById(R.id.imageViewWifi2);
+        conf_dados= (ImageView) findViewById(R.id.imageViewDados2);
+        conf_bt= (ImageView) findViewById(R.id.imageViewBt2);
+        conf_gps= (ImageView) findViewById(R.id.imageViewGPS2);
+        conf_som= (ImageView) findViewById(R.id.imageViewSom2);
 
-        dia_dom	= (TextView) findViewById(R.id.textViewDom);
-        dia_seg	= (TextView) findViewById(R.id.textViewSeg);
-        dia_ter	= (TextView) findViewById(R.id.textViewTer);
-        dia_qua	= (TextView) findViewById(R.id.textViewQua);
-        dia_qui	= (TextView) findViewById(R.id.textViewQui);
-        dia_sex	= (TextView) findViewById(R.id.textViewSex);
-        dia_sab	= (TextView) findViewById(R.id.textViewSab);
-        hora_inicio	= (TextView) findViewById(R.id.textViewInicio);
-        hora_fim = (TextView) findViewById(R.id.textViewFim);
+        dia_dom	= (TextView) findViewById(R.id.textViewDom2);
+        dia_seg	= (TextView) findViewById(R.id.textViewSeg2);
+        dia_ter	= (TextView) findViewById(R.id.textViewTer2);
+        dia_qua	= (TextView) findViewById(R.id.textViewQua2);
+        dia_qui	= (TextView) findViewById(R.id.textViewQui2);
+        dia_sex	= (TextView) findViewById(R.id.textViewSex2);
+        dia_sab	= (TextView) findViewById(R.id.textViewSab2);
+        hora_inicio	= (TextView) findViewById(R.id.textViewInicio2);
+        hora_fim = (TextView) findViewById(R.id.textViewFim2);
 
-        duracao = (SeekBar) findViewById(R.id.seekBar);
+        duracao = (SeekBar) findViewById(R.id.seekBar2);
 
         btSalvar = (Button) findViewById(R.id.btSalvar);
 

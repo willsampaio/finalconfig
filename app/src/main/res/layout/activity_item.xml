@@ -7,21 +7,24 @@
     android:orientation="vertical"
     tools:context="com.example.finalconfig.finalconfig.ItemActivity">
 
-        <Space
+
+        <TextView
+            android:id="@+id/textViewInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.05"/>
+            android:layout_weight="0.1"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@color/colorIntermediate"
+            android:textColor="@color/colorWhite"
+            android:text="@string/info_item" />
 
-         <include layout="@layout/item_layout"
+         <include layout="@layout/item_2_layout"
              android:id="@+id/includeItem"
              android:layout_height="wrap_content"
              android:layout_width="match_parent"
              android:layout_weight="0.5"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
 
         <Button android:id="@+id/btSalvar"
             android:layout_height="wrap_content"
