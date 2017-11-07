@@ -9,10 +9,14 @@ import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
 
+    static Intent itService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        itService = new Intent(getBaseContext(), Servico.class);
 
         esperarAbrirMain(1500);
     }
@@ -26,5 +30,21 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }, ms);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startService(itService);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
