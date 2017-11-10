@@ -1,5 +1,6 @@
 package com.example.finalconfig.finalconfig;
 
+import android.annotation.TargetApi;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -62,7 +63,7 @@ public class ItemActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_apagar) {
+        if (id == R.id.action_apagar || id == R.id.action_apagar_ic) {
             apagar();
             finish();
             return true;
@@ -103,7 +104,7 @@ public class ItemActivity extends AppCompatActivity {
 
         duracao = (SeekBar) findViewById(R.id.seekBar2);
 
-        btSalvar = (Button) findViewById(R.id.btSalvar);
+//        btSalvar = (Button) findViewById(R.id.btSalvar);
 
         Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
         SimpleDateFormat sdf = new SimpleDateFormat("HH");
@@ -113,7 +114,7 @@ public class ItemActivity extends AppCompatActivity {
 
         item = new Item(-1);
         item.setHora_inicio(h + ":" + m);
-        item.setHora_fim((Integer.parseInt(h)+1) + ":" + m);
+        item.setHora_fim(h + ":" + m);
 
         setCliks();
     }
@@ -127,12 +128,41 @@ public class ItemActivity extends AppCompatActivity {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void showItem(){
-        hora_inicio.setText(item.getHora_inicio());
-        hora_fim.setText(item.getHora_fim());
+        String hr0 = item.getHora_inicio();
+        String[] hm0 = hr0.split(":");
+        int h0 = Integer.parseInt(hm0[0]);
+
+        String hr1 = item.getHora_fim();
+        String[] hm1 = hr1.split(":");
+        int h1 = Integer.parseInt(hm1[0]);
+
+        String hr = getTimeSystem();
+        String[] hm = hr.split(":");
+        int h = Integer.parseInt(hm[0]) -3;
+
+        int max = h1/h0;
+        duracao.setMax(max);
+
+        if(h > h0) {
+            duracao.setProgress(h - h0);
+        }
+
+        hora_inicio.setText(hr0);
+        hora_fim.setText(hr1);
 
         int colorId = R.color.colorAccent;
         int colorId0 = R.color.colorText;
+
+//        if(item.getId() != -1){
+//            hora_inicio.setTextColor(getResources().getColor(colorId));
+//            hora_fim.setTextColor(getResources().getColor(colorId));
+//        }else {
+//            hora_inicio.setTextColor(getResources().getColor(colorId0));
+//            hora_fim.setTextColor(getResources().getColor(colorId0));
+//        }
 
         if(item.isDia_dom()){
             dia_dom.setTextColor(getResources().getColor(colorId));
@@ -217,6 +247,7 @@ public class ItemActivity extends AppCompatActivity {
     private void setCliks(){
 
         hora_inicio.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 abrirRelogio('i');
@@ -225,6 +256,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         hora_fim.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 abrirRelogio('f');
@@ -233,6 +265,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         dia_dom.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isDia_dom()) {
@@ -245,6 +278,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         dia_seg.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isDia_seg()) {
@@ -257,6 +291,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         dia_ter.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isDia_ter()) {
@@ -269,6 +304,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         dia_qua.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isDia_qua()) {
@@ -281,6 +317,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         dia_qui.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isDia_qui()) {
@@ -293,6 +330,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         dia_sex.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isDia_sex()){
@@ -305,6 +343,7 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         dia_sab.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isDia_sab()) {
@@ -317,56 +356,52 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         conf_sinc.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isConf_sinc()){
                     item.setConf_sinc(false);
-                    Toast.makeText(ItemActivity.this, "Desativar Sinc", Toast.LENGTH_SHORT).show();
                 }else {
                     item.setConf_sinc(true);
-                    Toast.makeText(ItemActivity.this, "Ativar Sinc", Toast.LENGTH_SHORT).show();
                 }
                 showItem();
             }
         });
 
         conf_wifi.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isConf_wifi()){
                     item.setConf_wifi(false);
-                    Toast.makeText(ItemActivity.this, "Desativar Wi-Fi", Toast.LENGTH_SHORT).show();
                 }else {
                     item.setConf_wifi(true);
-                    Toast.makeText(ItemActivity.this, "Ativar Wi-Fi", Toast.LENGTH_SHORT).show();
                 }
                 showItem();
             }
         });
 
         conf_dados.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isConf_dados()){
                     item.setConf_dados(false);
-                    Toast.makeText(ItemActivity.this, "Desativar Dados", Toast.LENGTH_SHORT).show();
                 }else {
                     item.setConf_dados(true);
-                    Toast.makeText(ItemActivity.this, "Ativar Dados", Toast.LENGTH_SHORT).show();
                 }
                 showItem();
             }
         });
 
         conf_bt.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isConf_bt()){
                     item.setConf_bt(false);
-                    Toast.makeText(ItemActivity.this, "Desativar Bluetooth", Toast.LENGTH_SHORT).show();
                 }else {
                     item.setConf_bt(true);
-                    Toast.makeText(ItemActivity.this, "Ativar Bluetooth", Toast.LENGTH_SHORT).show();
                 }
 
                 showItem();
@@ -374,40 +409,38 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         conf_gps.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isConf_gps()){
                     item.setConf_gps(false);
-                    Toast.makeText(ItemActivity.this, "Desativar GPS", Toast.LENGTH_SHORT).show();
                 }else {
                     item.setConf_gps(true);
-                    Toast.makeText(ItemActivity.this, "Ativar GPS", Toast.LENGTH_SHORT).show();
                 }
                 showItem();
             }
         });
 
         conf_som.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(item.isConf_som()){
                     item.setConf_som(false);
-                    Toast.makeText(ItemActivity.this, "Desativar Som", Toast.LENGTH_SHORT).show();
                 }else {
                     item.setConf_som(true);
-                    Toast.makeText(ItemActivity.this, "Ativar Som", Toast.LENGTH_SHORT).show();
                 }
                 showItem();
             }
         });
 
-        btSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                salvar();
-                finish();
-            }
-        });
+//        btSalvar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                salvar();
+//                finish();
+//            }
+//        });
 
     }
 
@@ -464,5 +497,16 @@ public class ItemActivity extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private String getTimeSystem(){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
+        return sdf.format(hora);
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        salvar();
+    }
 }

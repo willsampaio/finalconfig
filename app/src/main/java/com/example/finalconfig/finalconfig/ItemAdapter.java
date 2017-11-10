@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -49,6 +54,7 @@ public class ItemAdapter extends BaseAdapter {
         return itemList.get(i).getId();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         if(view == null){
@@ -120,7 +126,26 @@ public class ItemAdapter extends BaseAdapter {
 
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         public void setValues(Item item) {
+            String hr0 = item.getHora_inicio();
+            String[] hm0 = hr0.split(":");
+            int h0 = Integer.parseInt(hm0[0]);
+
+            String hr1 = item.getHora_fim();
+            String[] hm1 = hr1.split(":");
+            int h1 = Integer.parseInt(hm1[0]);
+
+            String hr = getTimeSystem();
+            String[] hm = hr.split(":");
+            int h = Integer.parseInt(hm[0]) -3;
+
+            int max = h1/h0;
+            duracao.setMax(max);
+
+            if(h > h0) {
+                duracao.setProgress(h - h0);
+            }
 
             hora_inicio.setText(item.getHora_inicio());
             hora_fim.setText(item.getHora_fim());
@@ -206,6 +231,13 @@ public class ItemAdapter extends BaseAdapter {
                 conf_som.setImageResource(R.drawable.audio0);
             }
 
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        private String getTimeSystem(){
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
+            return sdf.format(hora);
         }
     }
 

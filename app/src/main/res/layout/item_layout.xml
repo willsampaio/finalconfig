@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:max="23"
             android:min="0"
-            android:progress="5" />
+            android:progress="0" />
 
         <TextView
             android:id="@+id/textViewFim"

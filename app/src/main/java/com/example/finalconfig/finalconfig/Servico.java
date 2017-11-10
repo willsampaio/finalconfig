@@ -42,7 +42,6 @@ public class Servico extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        criarNotificacao();
 
         new Thread(new Runnable(){
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -51,12 +50,11 @@ public class Servico extends Service {
                 while(true)
                 {
                     try {
-                        Thread.sleep(60000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     setConf();
-                    criarNotificacao();
                 }
 
             }
@@ -73,9 +71,9 @@ public class Servico extends Service {
     protected void criarNotificacao() {
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.switch_on)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!");
+                        .setSmallIcon(R.drawable.icone)
+                        .setContentTitle("Turn Off")
+                        .setContentText("Configurações alteradas");
 
         int mNotificationId = 001;
 
@@ -88,12 +86,21 @@ public class Servico extends Service {
     private void setConf(){
         ItemADO iado = new ItemADO(getApplicationContext());
         ArrayList<Item> lista = iado.buscarItems();
+
         String hr = getTimeSystem();
+        String[] hm = hr.split(":");
+        int h = Integer.parseInt(hm[0]) -3;
+        if(h >= 10) {
+            hr = h + ":" + hm[1];
+        }else{
+            hr = "0" + h + ":" + hm[1];
+        }
 
         for(Item item : lista){
             if(getDaysItem(item)[getDaySystem()] == 1){
                 if(item.getHora_inicio().equals(hr)){
                     ativaDesativa(item);
+                    criarNotificacao();
                 }
             }
         }
@@ -104,6 +111,7 @@ public class Servico extends Service {
     private String getTimeSystem(){
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
+        hora.setTime(hora.getTime()-3);
         return sdf.format(hora);
     }
 

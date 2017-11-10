@@ -20,21 +20,27 @@
             android:textColor="@color/colorWhite"
             android:text="@string/info_item" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"/>
+
          <include layout="@layout/item_2_layout"
              android:id="@+id/includeItem"
              android:layout_height="wrap_content"
              android:layout_width="match_parent"
              android:layout_weight="0.5"/>
 
-        <Button android:id="@+id/btSalvar"
+ <!--       <Button android:id="@+id/btSalvar"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="0.01"
             android:text="Salvar"/>
+-->
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+            android:layout_weight="0.2"/>
 
 </LinearLayout>
