@@ -71,7 +71,7 @@ public class Servico extends Service {
     protected void criarNotificacao() {
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.icone)
+                        .setSmallIcon(R.drawable.notificacao)
                         .setContentTitle("Turn Off")
                         .setContentText("Configurações alteradas");
 
@@ -97,7 +97,7 @@ public class Servico extends Service {
         }
 
         for(Item item : lista){
-            if(getDaysItem(item)[getDaySystem()] == 1){
+            if(getDaysItem(item)[getDaySystem() -1] == 1){
                 if(item.getHora_inicio().equals(hr)){
                     ativaDesativa(item);
                     criarNotificacao();
@@ -121,7 +121,8 @@ public class Servico extends Service {
         Date dia = Calendar.getInstance().getTime();
         GregorianCalendar gc = new GregorianCalendar();
         gc.setTime(dia);
-        return gc.get(GregorianCalendar.DAY_OF_WEEK);
+        int diaI = gc.get(GregorianCalendar.DAY_OF_WEEK);
+        return diaI;
     }
 
     private int[] getDaysItem(Item item){

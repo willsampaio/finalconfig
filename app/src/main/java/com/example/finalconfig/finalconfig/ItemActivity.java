@@ -106,11 +106,10 @@ public class ItemActivity extends AppCompatActivity {
 
 //        btSalvar = (Button) findViewById(R.id.btSalvar);
 
-        Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
-        SimpleDateFormat sdf = new SimpleDateFormat("HH");
-        String h = sdf.format(hora);
-        sdf = new SimpleDateFormat("mm");
-        String m = sdf.format(hora);
+        String hr = getTimeSystem();
+        String[] hm = hr.split(":");
+        int h = Integer.parseInt(hm[0]) -3;
+        int m = Integer.parseInt(hm[1]);
 
         item = new Item(-1);
         item.setHora_inicio(h + ":" + m);
@@ -462,12 +461,30 @@ public class ItemActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void abrirRelogio(final char i_f){
         LayoutInflater li = getLayoutInflater();
         View view = li.inflate(R.layout.time_layout, null);
 
         final TimePicker timePicker = view.findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true);
+
+        if(i_f == 'i') {
+            String hr = item.getHora_inicio();
+            String[] hm = hr.split(":");
+            int h = Integer.parseInt(hm[0]);
+            int m = Integer.parseInt(hm[1]);
+            timePicker.setHour(h);
+            timePicker.setMinute(m);
+        }else{
+            String hr = item.getHora_fim();
+            String[] hm = hr.split(":");
+            int h = Integer.parseInt(hm[0]);
+            int m = Integer.parseInt(hm[1]);
+            timePicker.setHour(h);
+            timePicker.setMinute(m);
+        }
+
         Button btOk = view.findViewById(R.id.buttonSalvarHora);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
