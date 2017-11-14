@@ -108,7 +108,7 @@ public class ItemActivity extends AppCompatActivity {
 
         String hr = getTimeSystem();
         String[] hm = hr.split(":");
-        int h = Integer.parseInt(hm[0]) -3;
+        int h = Math.abs(Integer.parseInt(hm[0]) -3);
         int m = Integer.parseInt(hm[1]);
 
         item = new Item(-1);
@@ -479,7 +479,7 @@ public class ItemActivity extends AppCompatActivity {
         }else{
             String hr = item.getHora_fim();
             String[] hm = hr.split(":");
-            int h = Integer.parseInt(hm[0]);
+            int h = Math.abs(Integer.parseInt(hm[0]));
             int m = Integer.parseInt(hm[1]);
             timePicker.setHour(h);
             timePicker.setMinute(m);

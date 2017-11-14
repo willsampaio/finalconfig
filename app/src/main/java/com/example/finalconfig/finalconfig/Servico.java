@@ -90,6 +90,19 @@ public class Servico extends Service {
         String hr = getTimeSystem();
         String[] hm = hr.split(":");
         int h = Integer.parseInt(hm[0]) -3;
+
+        switch (h){
+            case -3:
+                h = 21;
+                break;
+            case -2:
+                h = 22;
+                break;
+            case -1:
+                h = 23;
+                break;
+        }
+
         if(h >= 10) {
             hr = h + ":" + hm[1];
         }else{
