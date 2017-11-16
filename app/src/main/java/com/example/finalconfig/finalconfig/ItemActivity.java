@@ -112,8 +112,17 @@ public class ItemActivity extends AppCompatActivity {
         int m = Integer.parseInt(hm[1]);
 
         item = new Item(-1);
-        item.setHora_inicio(h + ":" + m);
-        item.setHora_fim(h + ":" + m);
+
+//        if(h < 10) {
+//            item.setHora_inicio("0" + h + ":" + m);
+//            item.setHora_fim("0" + h + ":" + m);
+//        }else{
+//            item.setHora_inicio(h + ":" + m);
+//            item.setHora_fim(h + ":" + m);
+//        }
+
+        item.setHora_inicio(String.format("%02d:%02d", h, m));
+        item.setHora_fim(String.format("%02d:%02d", h, m));
 
         setCliks();
     }

@@ -19,6 +19,9 @@ public class SobreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sobre);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         imageViewIcon = (ImageView) findViewById(R.id.imageViewIcon);
         textViewSite = (TextView) findViewById(R.id.textViewSite);
         textViewTel = (TextView) findViewById(R.id.textViewNumero);
@@ -46,5 +49,11 @@ public class SobreActivity extends AppCompatActivity {
     private void discarNumero(){
         Intent it = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + getString(R.string.info_unit_tel)));
         startActivity(it);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
