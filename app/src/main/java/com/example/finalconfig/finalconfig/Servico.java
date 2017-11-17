@@ -33,6 +33,7 @@ import java.util.GregorianCalendar;
 
 public class Servico extends Service {
 
+    boolean notificacao = false;
 
     @Nullable
     @Override
@@ -112,8 +113,13 @@ public class Servico extends Service {
         for(Item item : lista){
             if(getDaysItem(item)[getDaySystem() -1] == 1){
                 if(item.getHora_inicio().equals(hr)){
-                    ativaDesativa(item);
-                    criarNotificacao();
+                    if(!notificacao) {
+                        ativaDesativa(item);
+                        criarNotificacao();
+                        notificacao = true;
+                    }
+                }else {
+                    notificacao = false;
                 }
             }
         }
